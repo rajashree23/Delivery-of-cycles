@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 // import 'package:sign_in_flutter/loginpage.dart';
 // import 'package:sign_in_flutter/signin.dart';
@@ -16,16 +16,54 @@ class FirstScreenState extends State<FirstScreen> {
   Completer<GoogleMapController> _controller = Completer();
   double longitude, latitude;
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
   @override
   Widget build(BuildContext context) {
+    void _currentLocation() async {
+      final GoogleMapController controller = await _controller.future;
+      Position position;
+
+      try {
+        position = await Geolocator()
+            .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+        latitude = position.latitude;
+        longitude = position.longitude;
+
+        // print(latitude);
+        // print(longitude);
+      } on Exception {
+        position = null;
+      }
+
+      // controller.animateCamera(CameraUpdate.newCameraPosition(
+      //   CameraPosition(
+      //     bearing: 0,
+      //     target: LatLng(position.latitude, position.longitude),
+      //     zoom: 17.0,
+      //   ),
+      // ));
+  }
+
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Welcome")
+      body: GoogleMap(
+        mapType: MapType.normal,
+        initialCameraPosition: CameraPosition(
+          target: LatLng(latitude, longitude),
+          zoom: 14.4746,
+        ),
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+        myLocationEnabled: true,
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     _currentLocation();
+      //   },
+      //   child: Icon(Icons.location_on),
+      //   // label: Text('Get Location!'),
+      //   // icon: Icon(Icons.location_on),
+      // ),
+      appBar: new AppBar(title: new Text("Welcome")),
       // body: Container(
       //   decoration: BoxDecoration(
       //     gradient: LinearGradient(
@@ -102,3 +140,28 @@ class FirstScreenState extends State<FirstScreen> {
     );
   }
 }
+//   void _currentLocation() async {
+//     final GoogleMapController controller = await _controller.future;
+//     Position position;
+
+//     try {
+//       position = await Geolocator()
+//           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+//       latitude = position.latitude;
+//       longitude = position.longitude;
+
+//       // print(latitude);
+//       // print(longitude);
+//     } on Exception {
+//       position = null;
+//     }
+
+//     controller.animateCamera(CameraUpdate.newCameraPosition(
+//       CameraPosition(
+//         bearing: 0,
+//         target: LatLng(position.latitude, position.longitude),
+//         zoom: 17.0,
+//       ),
+//     ));
+//   }
+// }
