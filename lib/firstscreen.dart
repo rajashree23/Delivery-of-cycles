@@ -18,21 +18,21 @@ class FirstScreenState extends State<FirstScreen> {
 
   @override
   Widget build(BuildContext context) {
-    void _currentLocation() async {
-      final GoogleMapController controller = await _controller.future;
-      Position position;
+    // void _currentLocation() async {
+    //   final GoogleMapController controller = await _controller.future;
+    //   Position position;
 
-      try {
-        position = await Geolocator()
-            .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-        latitude = position.latitude;
-        longitude = position.longitude;
+    //   try {
+    //     position = await Geolocator()
+    //         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    //     latitude = position.latitude;
+    //     longitude = position.longitude;
 
-        // print(latitude);
-        // print(longitude);
-      } on Exception {
-        position = null;
-      }
+    //     // print(latitude);
+    //     // print(longitude);
+    //   } on Exception {
+    //     position = null;
+    //   }
 
       // controller.animateCamera(CameraUpdate.newCameraPosition(
       //   CameraPosition(
@@ -41,8 +41,7 @@ class FirstScreenState extends State<FirstScreen> {
       //     zoom: 17.0,
       //   ),
       // ));
-  }
-
+  
     return Scaffold(
       body: GoogleMap(
         mapType: MapType.normal,
