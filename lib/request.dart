@@ -14,7 +14,7 @@ final String url2="https://nec-hn.herokuapp.com/driver/tokenid/location";
 Future<dynamic> signin() async {
        Future<String> id= signInWithGoogle();
     var response = await http.post(Uri.encodeFull(url1),
-      body: json.encode({"token": id ,"latitude":, "longitude":}),
+      body: json.encode({"token": id ,"latitude":10.12, "longitude":20.78}),
         headers: {
           "content-type": "application/json",
           "Accept": "application/json"

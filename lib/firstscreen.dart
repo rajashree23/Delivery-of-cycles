@@ -52,7 +52,7 @@ class FirstScreenState extends State<FirstScreen> {
     // ));
 
     return Scaffold(
-       appBar: new AppBar(
+         appBar: new AppBar(
           title: new Text("Welcome"), backgroundColor: Colors.purple[800]),
 
       drawer: new Drawer(
@@ -115,12 +115,14 @@ class FirstScreenState extends State<FirstScreen> {
                       MaterialPageRoute(builder: (context) {
                     return LoginPage();
                   }), ModalRoute.withName('/'));
-                }),
+                  }),
           ],
         ),
       ),
       body:new Container(
+         
         child: new Column(
+             mainAxisSize:MainAxisSize.min,
           children: <Widget>[
             GoogleMap(
                 mapType: MapType.normal,
@@ -134,7 +136,10 @@ class FirstScreenState extends State<FirstScreen> {
         myLocationEnabled: true,
       ),
        new Container(
-         child: new Column(children: <Widget>[
+         child: new Column(
+             mainAxisSize:MainAxisSize.min,
+           
+           children: <Widget>[
            new RaisedButton(
              child: const Text('From where'),
          color: Colors.grey,
@@ -145,13 +150,13 @@ class FirstScreenState extends State<FirstScreen> {
         // then get the Prediction selected
         Prediction p = await PlacesAutocomplete.show(
             context: context, apiKey: kGoogleApiKey);
-        displayPrediction(p);
+            displayPrediction(p);
 
        }
            )
          ],),
        )
-            
+           
           ],
         
         )
@@ -276,7 +281,7 @@ class FirstScreenState extends State<FirstScreen> {
       //    splashColor: Colors.blueGrey,
       //    onPressed: () async {
       //   // show input autocomplete with selected mode
-      //   // then get the Prediction selected
+       //   // then get the Prediction selected
       //   Prediction p = await PlacesAutocomplete.show(
       //       context: context, apiKey: kGoogleApiKey);
       //   displayPrediction(p);
