@@ -120,7 +120,7 @@ class FirstScreenState extends State<FirstScreen> {
         ),
       ),
       body:new Container(
-         
+         child:SingleChildScrollView(         
         child: new Column(
              mainAxisSize:MainAxisSize.min,
           children: <Widget>[
@@ -161,7 +161,7 @@ class FirstScreenState extends State<FirstScreen> {
         
         )
       )
-
+      )
       
 
       // floatingActionButton: FloatingActionButton(

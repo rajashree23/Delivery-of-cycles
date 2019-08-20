@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
 import 'signin.dart';
-import 'firstscreen.dart';
+import 'user.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
-            return FirstScreen();
+            return User();
           },
         ),
       );
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
-                'Sign in as user with Google',
+                'Sign in as rider with Google',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.grey,
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
-            return FirstScreen();
+            return User();
           },
         ),
       );
