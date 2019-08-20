@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_maps_webservice/places.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -32,9 +33,10 @@ Future<String> signInWithGoogle() async {
 
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
-  
-  print(user.uid);
-  print(googleSignInAuthentication.idToken);
+  // print(_auth);
+  // print("HEEEEEEEEEEEEEEEEEEEEEEELOOOOOOOOOOOOOOOOOOO") ;
+  // print(currentUser.getIdToken());
+  return currentUser.uid;
   
 }
 
