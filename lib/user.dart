@@ -16,12 +16,12 @@ const kGoogleApiKey = "AIzaSyAAsdT4ypXdy_0tOrE5NMl-pess_Eo07D0";
 
 GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
 
-class FirstScreen extends StatefulWidget {
+class User extends StatefulWidget {
   @override
-  FirstScreenState createState() => FirstScreenState();
+  UserState createState() => UserState();
 }
 
-class FirstScreenState extends State<FirstScreen> {
+class UserState extends State<User> {
   Completer<GoogleMapController> _controller = Completer();
   double longitude, latitude;
 
@@ -121,6 +121,7 @@ class FirstScreenState extends State<FirstScreen> {
       ),
       body:new Container(
         child: new Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             GoogleMap(
                 mapType: MapType.normal,
@@ -134,7 +135,9 @@ class FirstScreenState extends State<FirstScreen> {
         myLocationEnabled: true,
       ),
        new Container(
-         child: new Column(children: <Widget>[
+         child: new Column(
+           mainAxisSize: MainAxisSize.min,
+           children: <Widget>[
            new RaisedButton(
              child: const Text('From where'),
          color: Colors.grey,
