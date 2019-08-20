@@ -20,30 +20,6 @@ class FirstScreenState extends State<FirstScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // void _currentLocation() async {
-    //   final GoogleMapController controller = await _controller.future;
-    //   Position position;
-
-    //   try {
-    //     position = await Geolocator()
-    //         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    //     latitude = position.latitude;
-    //     longitude = position.longitude;
-
-    //     // print(latitude);
-    //     // print(longitude);
-    //   } on Exception {
-    //     position = null;
-    //   }
-
-      // controller.animateCamera(CameraUpdate.newCameraPosition(
-      //   CameraPosition(
-      //     bearing: 0,
-      //     target: LatLng(position.latitude, position.longitude),
-      //     zoom: 17.0,
-      //   ),
-      // ));
-  
     return Scaffold(
       body: GoogleMap(
         mapType: MapType.normal,
@@ -63,21 +39,10 @@ class FirstScreenState extends State<FirstScreen> {
         },
        
         child: Icon(Icons.location_on),
-        // label: Text('Get Location!'),
-        // icon: Icon(Icons.location_on),
+      
       ),
       appBar: new AppBar(title: new Text("Welcome")),
-      // body: Container(
-      //   decoration: BoxDecoration(
-      //     gradient: LinearGradient(
-      //       begin: Alignment.topRight,
-      //       end: Alignment.bottomLeft,
-      //       colors: [Colors.blue[100], Colors.blue[400]],
-      //     ),
-    //  drawer: new Drawer(
-    //     child: new ListView(
-    //       children: <Widget>[
-    //         new UserAccountsDrawerHeader(
+      
             
     drawer: new Drawer(
         child: new ListView(
@@ -146,32 +111,6 @@ class FirstScreenState extends State<FirstScreen> {
       ),
 
            
-                            // Text(
-            //   email,
-            //   style: TextStyle(
-            //       fontSize: 25,
-            //       color: Colors.deepPurple,
-            //       fontWeight: FontWeight.bold),
-            // ),
-            // SizedBox(height: 40),
-
-            // RaisedButton(
-            //   onPressed: () {
-            //    
-            //    
-            //   },
-            //   color: Colors.deepPurple,
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: Text(
-            //       'Sign Out',
-            //       style: TextStyle(fontSize: 25, color: Colors.white),
-            //     ),
-            //   ),
-            //   elevation: 5,
-            //   shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(40)),
-            // )
           
         
       );
