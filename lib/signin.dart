@@ -35,9 +35,9 @@ Future<String> signInWithGoogle() async {
   assert(user.uid == currentUser.uid);
   // print(_auth);
   // print("HEEEEEEEEEEEEEEEEEEEEEEELOOOOOOOOOOOOOOOOOOO") ;
-  // print(currentUser.getIdToken());
+
+  // print(id);
   return currentUser.uid;
-  
 }
 
 void signOutGoogle() async {
