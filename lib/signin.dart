@@ -16,10 +16,8 @@ Future<String> signInWithGoogle() async {
   final AuthCredential credential = GoogleAuthProvider.getCredential(
     accessToken: googleSignInAuthentication.accessToken,
     idToken: googleSignInAuthentication.idToken,
-   
   );
- 
-  
+
   final FirebaseUser user = await _auth.signInWithCredential(credential);
   assert(user.email != null);
   assert(user.displayName != null);
@@ -35,7 +33,9 @@ Future<String> signInWithGoogle() async {
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
   
-  return 'signInWithGoogle succeeded: $user';
+  print(user.uid);
+  print(googleSignInAuthentication.idToken);
+  
 }
 
 void signOutGoogle() async {
@@ -47,4 +47,3 @@ void signOutGoogle() async {
 // hackathon1-711a3
 
 // AIzaSyAAsdT4ypXdy_0tOrE5NMl-pess_Eo07D0
-

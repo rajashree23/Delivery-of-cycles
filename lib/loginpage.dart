@@ -24,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
               FlutterLogo(size: 150),
               SizedBox(height: 50),
               _signInUButton(),
+               SizedBox(height: 5),
               _signInDButton(),
             ],
           ),
@@ -32,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
   Widget _signInUButton() {
+     
     return OutlineButton(
       splashColor: Colors.grey,
       onPressed: (){
@@ -45,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
       );
     });
   },
+      padding: const EdgeInsets.only(top: 5.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
       borderSide: BorderSide(color: Colors.grey),
