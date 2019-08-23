@@ -22,7 +22,7 @@ class DriverState extends State<Driver> {
   Widget build(BuildContext context) {
     setState(() {
       driverLocation();
-      const oneSecond = const Duration(seconds: 120);
+      const oneSecond = const Duration(seconds:120);
       timer = Timer.periodic(oneSecond, (Timer t) => setState(() {}));
     });
 

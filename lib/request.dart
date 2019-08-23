@@ -4,14 +4,28 @@ import 'package:geolocator/geolocator.dart';
 import 'signin.dart';
 import 'package:http/http.dart' as http;
 
-
 final String url1 = "https://nec-hn.herokuapp.com/user";
 final String url2 = "https://nec-hn.herokuapp.com/driver";
 
- Future<dynamic> userLocation() async {
+Future<dynamic> userLocation() async {
   String id = await signInWithGoogle();
-  double latitude,longitude;
-  void _premiumLocation() async  {
+  double latitude, longitude;
+
+  Future<double> _premiumLatitude() async {
+    Position position;
+
+    try {
+      position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      latitude = position.latitude;
+    } on Exception {
+      position = null;
+    }
+    return latitude;
+  }
+
+  double lat = await _premiumLatitude();
+  Future<double> _premiumLongitude() async {
     Position position;
 
     try {
@@ -19,24 +33,19 @@ final String url2 = "https://nec-hn.herokuapp.com/driver";
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
       longitude = position.longitude;
-     
-      // print(latitude);
-      // print(longitude);
     } on Exception {
       position = null;
     }
-  
+    return longitude;
   }
-           
 
- 
-_premiumLocation();
-print(id);
-print(latitude);
-print(longitude);
+  double lon = await _premiumLongitude();
+  print(id);
+  print(lat);
+  print(lon);
 
   var response = await http.post(Uri.encodeFull(url1),
-      body: json.encode({"token": id, "latitude": latitude, "longitude": longitude}),
+      body: json.encode({"token": id, "latitude": lat, "longitude": lon}),
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
@@ -48,14 +57,27 @@ print(longitude);
   }
 }
 
-
+/////////////////////////////////////////////
 
 Future<dynamic> driverLocation() async {
   String id = await signInWithGoogle();
-  // print("HELOO");
-  // print(id);
   double latitude, longitude;
-  void _currentLocation() async {
+
+  Future<double> _currentLatitude() async {
+    Position position;
+
+    try {
+      position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      latitude = position.latitude;
+    } on Exception {
+      position = null;
+    }
+    return latitude;
+  }
+
+  double lat = await _currentLatitude();
+  Future<double> _currentLongitude() async {
     Position position;
 
     try {
@@ -63,16 +85,19 @@ Future<dynamic> driverLocation() async {
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
       longitude = position.longitude;
-      
+
+      // print(latitude);
+      // print(longitude);
     } on Exception {
       position = null;
     }
+    return longitude;
   }
 
-  _currentLocation();
+  double lon = await _currentLongitude();
   print(id);
-      print(latitude);
-      print(longitude);
+  print(lat);
+  print(lon);
 
   var response = await http.post(Uri.encodeFull(url2),
       body: json

@@ -107,7 +107,7 @@ class UserState extends State<User> {
                 mapType: MapType.normal,
                 initialCameraPosition: CameraPosition(
                   target: LatLng(12.86, 17.90),
-                  zoom: 14.4746,
+                  zoom: 15,
                 ),
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
