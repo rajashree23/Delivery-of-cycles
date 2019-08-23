@@ -137,17 +137,11 @@ class UserState extends State<User> {
 
 
       new RaisedButton(
-<<<<<<< Updated upstream
-        child: new Text("SignUp"),
-        color:  Colors.blueAccent[600],
-        onPressed: () {
-          _currentLocation();
-        }
-=======
         child: new Text("Premium"),
         color:  Colors.redAccent,
-        onPressed:null,
->>>>>>> Stashed changes
+        onPressed: (){
+     _currentLocation();
+        }
         ),
 
 
