@@ -139,7 +139,9 @@ class UserState extends State<User> {
       new RaisedButton(
         child: new Text("SignUp"),
         color:  Colors.blueAccent[600],
-        onPressed: null,
+        onPressed: () {
+          _currentLocation();
+        }
         ),
 
 
@@ -153,5 +155,21 @@ class UserState extends State<User> {
       ),
     );
   }
+  void _currentLocation() async {
+    Position position;
+
+    try {
+      position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      latitude = position.latitude;
+      longitude = position.longitude;
+     
+      print(latitude);
+      print(longitude);
+    } on Exception {
+      position = null;
+    }
+  }
+
 
 }
