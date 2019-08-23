@@ -24,13 +24,12 @@ class User extends StatefulWidget {
 class UserState extends State<User> {
   Completer<GoogleMapController> _controller = Completer();
   double longitude, latitude;
-   @override
+  @override
   Widget build(BuildContext context) {
-
     // var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
 
     return new Scaffold(
-        appBar: new AppBar(
+      appBar: new AppBar(
           title: new Text("Welcome"), backgroundColor: Colors.purple[800]),
       drawer: new Drawer(
         child: new ListView(
@@ -98,15 +97,10 @@ class UserState extends State<User> {
       ),
       body: new SafeArea(
         child: new Column(
-        children: [
-          new Expanded(
-            flex: 3,
-           
-            
-              child:  
-               GoogleMap(
-              
-              
+          children: [
+            new Expanded(
+              flex: 3,
+              child: GoogleMap(
                 mapType: MapType.normal,
                 initialCameraPosition: CameraPosition(
                   target: LatLng(12.86, 17.90),
@@ -117,44 +111,46 @@ class UserState extends State<User> {
                 },
                 myLocationEnabled: true,
               ),
-             
-                
-              ),
-           
-          
-          new Expanded(
-            flex: 2,
-            child:new Container(
-    child: new ButtonBar(
-
-      children: <Widget>[
-
-      new RaisedButton(
-        child: new Text("Normal"),
-        color:  Colors.blueAccent[600],
-        onPressed: null,
-        ),
-
-
-      new RaisedButton(
-        child: new Text("Premium"),
-        color:  Colors.redAccent,
-        onPressed: (){
-     _currentLocation();
-        }
-        ),
-
-
-      ],
-    ),
-  ),
             ),
-          
-        ],
+            new Expanded(
+              flex: 2,
+              child: new Container(
+                child: new ButtonBar(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                   
+                    
+                    new RaisedButton(
+                      child: new Text("Normal"),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+                      highlightElevation: 0,
+                      color: Colors.blueAccent[600],
+                      onPressed: null,
+                    ),
+                    
+                    new RaisedButton(
+                        child: new Text("Premium"),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        highlightElevation: 0,
+                        
+                        color: Colors.redAccent,
+                        onPressed: () {
+                          _currentLocation();
+                        }),
+                    
+              
+                  ],
+                ),
+              ),
+            ),
+          ],
       ),
       ),
     );
   }
+
   void _currentLocation() async {
     Position position;
 
@@ -163,13 +159,11 @@ class UserState extends State<User> {
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
       longitude = position.longitude;
-     
+
       print(latitude);
       print(longitude);
     } on Exception {
       position = null;
     }
   }
-
-
 }
