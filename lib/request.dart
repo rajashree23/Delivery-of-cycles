@@ -83,7 +83,7 @@ Future<dynamic> driverLocation() async {
     try {
       position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-      latitude = position.latitude;
+      longitude = position.longitude;
       
 
       // print(latitude);

@@ -116,11 +116,9 @@ class UserState extends State<User> {
             ),
             new Expanded(
               flex: 2,
-              child: new SizedBox(
-                 width: 200.0,
-                 height: 100.0,
               child: new Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                
                 children: <Widget>[
                   new RaisedButton(
                     child: new Text("Normal"),
@@ -138,7 +136,6 @@ class UserState extends State<User> {
                         userLocation();
                       }),
                 ],
-              ),
               ),
             ),
           ],
