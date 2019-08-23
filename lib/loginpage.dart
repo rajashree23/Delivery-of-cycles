@@ -5,7 +5,6 @@ import 'package:nec/driver.dart';
 import 'signin.dart';
 import 'user.dart';
 
-
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -25,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
               FlutterLogo(size: 150),
               SizedBox(height: 50),
               _signInUButton(),
-               SizedBox(height: 5),
+              SizedBox(height: 5),
               _signInDButton(),
             ],
           ),
@@ -33,22 +32,22 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
   Widget _signInUButton() {
-     
     return OutlineButton(
       splashColor: Colors.grey,
-      onPressed: (){
-    signInWithGoogle().whenComplete(() {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) {
-            return User();
-          },
-        ),
-      );
-    });
-  },
-      // padding: const EdgeInsets.only(top: 5.0),
+      onPressed: () {
+        signInWithGoogle().whenComplete(() {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return User();
+              },
+            ),
+          );
+        });
+      },
+      // s
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
       borderSide: BorderSide(color: Colors.grey),
@@ -74,20 +73,21 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-   Widget _signInDButton() {
+
+  Widget _signInDButton() {
     return OutlineButton(
       splashColor: Colors.grey,
-      onPressed: (){
-    signInWithGoogle().whenComplete(() {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) {
-            return Driver();
-          },
-        ),
-      );
-    });
-  },
+      onPressed: () {
+        signInWithGoogle().whenComplete(() {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return Driver();
+              },
+            ),
+          );
+        });
+      },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
       borderSide: BorderSide(color: Colors.grey),

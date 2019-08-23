@@ -130,18 +130,24 @@ class UserState extends State<User> {
       children: <Widget>[
 
       new RaisedButton(
-        child: new Text("LogIn"),
+        child: new Text("Normal"),
         color:  Colors.blueAccent[600],
         onPressed: null,
         ),
 
 
       new RaisedButton(
+<<<<<<< Updated upstream
         child: new Text("SignUp"),
         color:  Colors.blueAccent[600],
         onPressed: () {
           _currentLocation();
         }
+=======
+        child: new Text("Premium"),
+        color:  Colors.redAccent,
+        onPressed:null,
+>>>>>>> Stashed changes
         ),
 
 
