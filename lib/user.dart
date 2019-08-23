@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:flutter_google_places/flutter_google_places.dart';
-import 'package:geocoder/geocoder.dart';
+// import 'package:flutter_google_places/flutter_google_places.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_webservice/places.dart';
-import 'autocomplete.dart';
+// import 'package:google_maps_webservice/places.dart';
+// import 'autocomplete.dart';
 // import 'package:sign_in_flutter/loginpage.dart';
 // import 'package:sign_in_flutter/signin.dart';
 // import 'loginpage.dart';
@@ -14,7 +14,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 const kGoogleApiKey = "AIzaSyAAsdT4ypXdy_0tOrE5NMl-pess_Eo07D0";
 
-GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
+// GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
 
 class User extends StatefulWidget {
   @override
@@ -124,15 +124,28 @@ class UserState extends State<User> {
           
           new Expanded(
             flex: 2,
-            child: RaisedButton(
-                  child: const Text('From where'),
-                  color: Colors.grey,
-                  elevation: 4.0,
-                  splashColor: Colors.blueGrey,
-                  onPressed: () async {
-                    
-                    
-                  }),
+            child:new Container(
+    child: new ButtonBar(
+
+      children: <Widget>[
+
+      new RaisedButton(
+        child: new Text("LogIn"),
+        color:  Colors.blueAccent[600],
+        onPressed: null,
+        ),
+
+
+      new RaisedButton(
+        child: new Text("SignUp"),
+        color:  Colors.blueAccent[600],
+        onPressed: null,
+        ),
+
+
+      ],
+    ),
+  ),
             ),
           
         ],
