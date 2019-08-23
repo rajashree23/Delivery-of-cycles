@@ -27,10 +27,10 @@ dependencies:
   firebase_auth: ^0.11.1+8
   google_maps_flutter:  ^0.4.0
   geolocator: ^5.0.0
-  flutter_google_places: ^0.2.3
-  geocoder: ^0.2.1
+  # flutter_google_places: ^0.2.3
+  # geocoder: ^0.2.1
   http: ^0.12.0+2
-  google_maps_webservice: ^0.0.14
+  # google_maps_webservice: ^0.0.14
   
   
 

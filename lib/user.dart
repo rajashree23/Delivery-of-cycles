@@ -27,7 +27,7 @@ class UserState extends State<User> {
    @override
   Widget build(BuildContext context) {
 
-    var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
+    // var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
 
     return new Scaffold(
         appBar: new AppBar(
@@ -96,7 +96,7 @@ class UserState extends State<User> {
           ],
         ),
       ),
-      body: new SafeArea(//I didnt add appbar. this will add necessary padding for status bar.
+      body: new SafeArea(
         child: new Column(
         children: [
           new Expanded(
@@ -121,7 +121,7 @@ class UserState extends State<User> {
                 
               ),
            
-          // ),
+          
           new Expanded(
             flex: 2,
             child: RaisedButton(
@@ -130,14 +130,9 @@ class UserState extends State<User> {
                   elevation: 4.0,
                   splashColor: Colors.blueGrey,
                   onPressed: () async {
-                    // show input autocomplete with selected mode
-                    // then get the Prediction selected
-                    Prediction p = await PlacesAutocomplete.show(
-                        context: context, apiKey: kGoogleApiKey);
-                    displayPrediction(p);
-                  }),//var // this will give you flexible width not fixed width
-              // margin: margin, //variable
-              // color: backColor,//variable
+                    
+                    
+                  }),
             ),
           
         ],
@@ -146,19 +141,4 @@ class UserState extends State<User> {
     );
   }
 
-  Future<Null> displayPrediction(Prediction p) async {
-    if (p != null) {
-      PlacesDetailsResponse detail =
-          await _places.getDetailsByPlaceId(p.placeId);
-
-      var placeId = p.placeId;
-      double lat = detail.result.geometry.location.lat;
-      double lng = detail.result.geometry.location.lng;
-
-      var address = await Geocoder.local.findAddressesFromQuery(p.description);
-      print(address);
-      print(lat);
-      print(lng);
-    }
-  }
 }
