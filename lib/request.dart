@@ -3,18 +3,22 @@ import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'signin.dart';
 import 'package:http/http.dart' as http;
-import 'user.dart';
 
-// final String url1="https://nec-hn.herokuapp.com/user/tokenid";
-// final String url2="https://nec-hn.herokuapp.com/driver/tokenid";
+
 final String url1 = "https://nec-hn.herokuapp.com/user";
 final String url2 = "https://nec-hn.herokuapp.com/driver";
-
-Future<dynamic> userLocation() async {
+double latitude,longitude;
+ Future<dynamic> userLocation() async {
   String id = await signInWithGoogle();
+  
+ 
+_premiumLocation();
+print(id);
+print(latitude);
+print(longitude);
 
   var response = await http.post(Uri.encodeFull(url1),
-      body: json.encode({"token": id, "latitude": 23.43, "longitude": 23.4}),
+      body: json.encode({"token": id, "latitude": latitude, "longitude": longitude}),
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
@@ -25,7 +29,7 @@ Future<dynamic> userLocation() async {
     print("Please login again");
   }
 }
-double latitude, longitude;
+
 void _premiumLocation() async  {
     Position position;
 
@@ -35,14 +39,15 @@ void _premiumLocation() async  {
       latitude = position.latitude;
       longitude = position.longitude;
      
-      print(latitude);
-      print(longitude);
+      // print(latitude);
+      // print(longitude);
     } on Exception {
       position = null;
     }
   
   }
- 
+           
+
 
 Future<dynamic> driverLocation() async {
   String id = await signInWithGoogle();
