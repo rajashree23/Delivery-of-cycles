@@ -7,10 +7,10 @@ import 'package:http/http.dart' as http;
 
 final String url1 = "https://nec-hn.herokuapp.com/user";
 final String url2 = "https://nec-hn.herokuapp.com/driver";
-double latitude,longitude;
+
  Future<dynamic> userLocation() async {
   String id = await signInWithGoogle();
-  
+  double latitude,longitude;
  Future<double> _premiumLatitudeLocation() async  {
     Position position;
 
