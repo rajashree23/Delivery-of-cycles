@@ -16,7 +16,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'request.dart';
 // import 'package:http/http.dart' as http;
 
-
 // GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
 
 class User extends StatefulWidget {
@@ -117,26 +116,29 @@ class UserState extends State<User> {
             ),
             new Expanded(
               flex: 2,
-              child: new Container(
-                child: new ButtonBar(
-                  mainAxisSize: MainAxisSize.min, 
-                 
-                  children: <Widget>[
-                    new RaisedButton(
-                      child: new Text("Normal"),
-                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                      color: Colors.blueAccent[600],
-                      onPressed: null,
-                    ),
-                    new RaisedButton(
-                        child: new Text("Premium"),
-                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                        color: Colors.redAccent,
-                        onPressed: () {
-                          userLocation();
-                        }),
-                  ],
-                ),
+              child: new SizedBox(
+                 width: 200.0,
+                 height: 100.0,
+              child: new Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  new RaisedButton(
+                    child: new Text("Normal"),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    color: Colors.blueAccent[600],
+                    onPressed: null,
+                  ),
+                  new RaisedButton(
+                      child: new Text("Premium"),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      color: Colors.redAccent,
+                      onPressed: () {
+                        userLocation();
+                      }),
+                ],
+              ),
               ),
             ),
           ],

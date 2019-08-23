@@ -37,7 +37,7 @@ Future<String> signInWithGoogle() async {
   // print("HEEEEEEEEEEEEEEEEEEEEEEELOOOOOOOOOOOOOOOOOOO") ;
 
   // print(id);
-  return currentUser.uid;
+  return currentUser.getIdToken();
 }
 
 void signOutGoogle() async {

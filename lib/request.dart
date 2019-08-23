@@ -8,7 +8,7 @@ final String url1 = "https://nec-hn.herokuapp.com/user";
 final String url2 = "https://nec-hn.herokuapp.com/driver";
 
 Future<dynamic> userLocation() async {
-  String id = await signInWithGoogle();
+  String token = await signInWithGoogle();
   double latitude, longitude;
 
   Future<double> _premiumLatitude() async {
@@ -40,12 +40,12 @@ Future<dynamic> userLocation() async {
   }
 
   double lon = await _premiumLongitude();
-  print(id);
+  print(token);
   print(lat);
   print(lon);
 
   var response = await http.post(Uri.encodeFull(url1),
-      body: json.encode({"token": id, "latitude": lat, "longitude": lon}),
+      body: json.encode({"token": token, "latitude": lat, "longitude": lon}),
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
@@ -60,7 +60,7 @@ Future<dynamic> userLocation() async {
 /////////////////////////////////////////////
 
 Future<dynamic> driverLocation() async {
-  String id = await signInWithGoogle();
+  String token = await signInWithGoogle();
   double latitude, longitude;
 
   Future<double> _currentLatitude() async {
@@ -84,7 +84,7 @@ Future<dynamic> driverLocation() async {
       position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
-      longitude = position.longitude;
+      
 
       // print(latitude);
       // print(longitude);
@@ -95,13 +95,12 @@ Future<dynamic> driverLocation() async {
   }
 
   double lon = await _currentLongitude();
-  print(id);
+  print(token);
   print(lat);
   print(lon);
 
   var response = await http.post(Uri.encodeFull(url2),
-      body: json
-          .encode({"token": id, "latitude": latitude, "longitude": longitude}),
+      body: json.encode({"token": token, "latitude": lat, "longitude": lon}),
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
