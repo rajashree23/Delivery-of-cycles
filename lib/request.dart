@@ -12,6 +12,7 @@ final String url2 = "https://nec-hn.herokuapp.com/driver";
 
 Future<dynamic> userLocation() async {
   String id = await signInWithGoogle();
+
   var response = await http.post(Uri.encodeFull(url1),
       body: json.encode({"token": id, "latitude": 23.43, "longitude": 23.4}),
       headers: {
@@ -24,6 +25,24 @@ Future<dynamic> userLocation() async {
     print("Please login again");
   }
 }
+double latitude, longitude;
+void _premiumLocation() async  {
+    Position position;
+
+    try {
+      position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      latitude = position.latitude;
+      longitude = position.longitude;
+     
+      print(latitude);
+      print(longitude);
+    } on Exception {
+      position = null;
+    }
+  
+  }
+ 
 
 Future<dynamic> driverLocation() async {
   String id = await signInWithGoogle();

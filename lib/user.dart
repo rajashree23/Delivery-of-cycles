@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 // import 'package:flutter_google_places/flutter_google_places.dart';
 
-import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 // import 'package:google_maps_webservice/places.dart';
 // import 'autocomplete.dart';
@@ -9,9 +9,12 @@ import 'package:flutter/material.dart';
 // import 'package:sign_in_flutter/signin.dart';
 // import 'loginpage.dart';
 import 'loginpage.dart';
+import 'package:geolocator/geolocator.dart';
 import 'signin.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'request.dart';
+import 'package:http/http.dart' as http;
 const kGoogleApiKey = "AIzaSyAAsdT4ypXdy_0tOrE5NMl-pess_Eo07D0";
 
 // GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
@@ -140,22 +143,45 @@ class UserState extends State<User> {
         child: new Text("Premium"),
         color:  Colors.redAccent,
         onPressed: (){
-     _currentLocation();
-        }
-        ),
-
-
-      ],
-    ),
-  ),
-            ),
+          userLocation();
+                   
+                  }
+                  ),
           
-        ],
-      ),
-      ),
-    );
+          
+                ],
+              ),
+            ),
+                      ),
+                    
+                  ],
+                ),
+                ),
+              );
+            }
+            Future<dynamic> userLocation() async {
+  String id = await signInWithGoogle();
+  
+ 
+_premiumLocation();
+print(id);
+print(latitude);
+print(longitude);
+
+  var response = await http.post(Uri.encodeFull(url1),
+      body: json.encode({"token": id, "latitude": latitude, "longitude": longitude}),
+      headers: {
+        "content-type": "application/json",
+        "Accept": "application/json"
+      });
+  print(response.body);
+  final int statusCode = response.statusCode;
+  if (statusCode == 201) {
+    print("Please login again");
   }
-  void _currentLocation() async {
+}
+
+void _premiumLocation() async  {
     Position position;
 
     try {
@@ -164,12 +190,16 @@ class UserState extends State<User> {
       latitude = position.latitude;
       longitude = position.longitude;
      
-      print(latitude);
-      print(longitude);
+      // print(latitude);
+      // print(longitude);
     } on Exception {
       position = null;
     }
+  
   }
-
-
-}
+             
+          
+          
+          }
+          
+         
