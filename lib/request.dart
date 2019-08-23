@@ -6,11 +6,11 @@ import 'package:http/http.dart' as http;
 
 // final String url1="https://nec-hn.herokuapp.com/user/tokenid";
 // final String url2="https://nec-hn.herokuapp.com/driver/tokenid";
-final String url1 = "https://nec-hn.herokuapp.com/user/tokenid/location";
-final String url2 = "https://nec-hn.herokuapp.com/driver/tokenid/location";
+final String url1 = "https://nec-hn.herokuapp.com/user";
+final String url2 = "https://nec-hn.herokuapp.com/driver";
 
 Future<dynamic> userLocation() async {
-String id = await signInWithGoogle();
+  String id = await signInWithGoogle();
   var response = await http.post(Uri.encodeFull(url1),
       body: json.encode({"token": id, "latitude": 23.43, "longitude": 23.4}),
       headers: {

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter login UI',
           //  theme: myAppTheme,
          
-          home: LoginPage(),
+          home: LoginPage(), 
           debugShowCheckedModeBanner: false,
           
         );

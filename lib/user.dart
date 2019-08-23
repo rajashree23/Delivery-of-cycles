@@ -24,12 +24,13 @@ class User extends StatefulWidget {
 class UserState extends State<User> {
   Completer<GoogleMapController> _controller = Completer();
   double longitude, latitude;
-
-  @override
+   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      appBar: new AppBar(
+
+    var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
+
+    return new Scaffold(
+        appBar: new AppBar(
           title: new Text("Welcome"), backgroundColor: Colors.purple[800]),
       drawer: new Drawer(
         child: new ListView(
@@ -95,11 +96,17 @@ class UserState extends State<User> {
           ],
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Row(
-            children: [
-              GoogleMap(
+      body: new SafeArea(//I didnt add appbar. this will add necessary padding for status bar.
+        child: new Column(
+        children: [
+          new Expanded(
+            flex: 3,
+           
+            
+              child:  
+               GoogleMap(
+              
+              
                 mapType: MapType.normal,
                 initialCameraPosition: CameraPosition(
                   target: LatLng(12.86, 17.90),
@@ -110,15 +117,14 @@ class UserState extends State<User> {
                 },
                 myLocationEnabled: true,
               ),
-            ],
-          ),
-
-          // new Container(
-          //   child: new Column(
-          //     children: <Widget>[
-          Row(
-            children: [
-              RaisedButton(
+             
+                
+              ),
+           
+          // ),
+          new Expanded(
+            flex: 2,
+            child: RaisedButton(
                   child: const Text('From where'),
                   color: Colors.grey,
                   elevation: 4.0,
@@ -129,38 +135,17 @@ class UserState extends State<User> {
                     Prediction p = await PlacesAutocomplete.show(
                         context: context, apiKey: kGoogleApiKey);
                     displayPrediction(p);
-                  }),
-            ],
-          ),
+                  }),//var // this will give you flexible width not fixed width
+              // margin: margin, //variable
+              // color: backColor,//variable
+            ),
+          
         ],
+      ),
       ),
     );
   }
 
-//   void _currentLocation() async {
-//     final GoogleMapController controller = await _controller.future;
-//     Position position;
-
-//     try {
-//       position = await Geolocator()
-//           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-//       latitude = position.latitude;
-//       longitude = position.longitude;
-
-//       // print(latitude);
-//       // print(longitude);
-//     } on Exception {
-//       position = null;
-//     }
-
-//     controller.animateCamera(CameraUpdate.newCameraPosition(
-//       CameraPosition(
-//         bearing: 0,
-//         target: LatLng(position.latitude, position.longitude),
-//         zoom: 17.0,
-//       ),
-//     ));
-//   }
   Future<Null> displayPrediction(Prediction p) async {
     if (p != null) {
       PlacesDetailsResponse detail =
