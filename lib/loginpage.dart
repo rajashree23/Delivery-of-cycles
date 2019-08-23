@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
               FlutterLogo(size: 150),
               SizedBox(height: 50),
               _signInUButton(),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               _signInDButton(),
             ],
           ),
@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
           );
         });
       },
-      // s
+      
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
       borderSide: BorderSide(color: Colors.grey),

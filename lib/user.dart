@@ -16,7 +16,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'request.dart';
 // import 'package:http/http.dart' as http;
 
-
 // GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
 
 class User extends StatefulWidget {
@@ -27,13 +26,12 @@ class User extends StatefulWidget {
 class UserState extends State<User> {
   Completer<GoogleMapController> _controller = Completer();
   double longitude, latitude;
-   @override
+  @override
   Widget build(BuildContext context) {
-
     // var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
 
     return new Scaffold(
-        appBar: new AppBar(
+      appBar: new AppBar(
           title: new Text("Welcome"), backgroundColor: Colors.purple[800]),
       drawer: new Drawer(
         child: new ListView(
@@ -101,19 +99,14 @@ class UserState extends State<User> {
       ),
       body: new SafeArea(
         child: new Column(
-        children: [
-          new Expanded(
-            flex: 3,
-           
-            
-              child:  
-               GoogleMap(
-              
-              
+          children: [
+            new Expanded(
+              flex: 3,
+              child: GoogleMap(
                 mapType: MapType.normal,
                 initialCameraPosition: CameraPosition(
                   target: LatLng(12.86, 17.90),
-                  zoom: 14.4746,
+                  zoom: 15,
                 ),
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
@@ -151,8 +144,14 @@ class UserState extends State<User> {
                    
                   }
                   ),
-          
-          
+                  new RaisedButton(
+                      child: new Text("Premium"),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      color: Colors.redAccent,
+                      onPressed: () {
+                        userLocation();
+                      }),
                 ],
               ),
      ),
