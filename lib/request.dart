@@ -11,26 +11,7 @@ double latitude,longitude;
  Future<dynamic> userLocation() async {
   String id = await signInWithGoogle();
   
- 
-_premiumLocation();
-print(id);
-print(latitude);
-print(longitude);
-
-  var response = await http.post(Uri.encodeFull(url1),
-      body: json.encode({"token": id, "latitude": latitude, "longitude": longitude}),
-      headers: {
-        "content-type": "application/json",
-        "Accept": "application/json"
-      });
-  print(response.body);
-  final int statusCode = response.statusCode;
-  if (statusCode == 201) {
-    print("Please login again");
-  }
-}
-
-void _premiumLocation() async  {
+ Future<double> _premiumLatitudeLocation() async  {
     Position position;
 
     try {
@@ -44,8 +25,45 @@ void _premiumLocation() async  {
     } on Exception {
       position = null;
     }
+    return latitude;
   
   }
+double lat = await _premiumLatitudeLocation();
+Future<double> _premiumLongitudeLocation() async  {
+    Position position;
+
+    try {
+      position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      latitude = position.latitude;
+      longitude = position.longitude;
+     
+      // print(latitude);
+      // print(longitude);
+    } on Exception {
+      position = null;
+    }
+    return longitude;
+  
+  }
+  double lon = await _premiumLongitudeLocation();
+print(id);
+print(lat);
+print(lon);
+
+  var response = await http.post(Uri.encodeFull(url1),
+      body: json.encode({"token": id, "latitude": lat, "longitude": lon}),
+      headers: {
+        "content-type": "application/json",
+        "Accept": "application/json"
+      });
+  print(response.body);
+  final int statusCode = response.statusCode;
+  if (statusCode == 201) {
+    print("Please login again");
+  }
+}
+
            
 
 
@@ -62,13 +80,14 @@ Future<dynamic> driverLocation() async {
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
       longitude = position.longitude;
-      print(id);
-      print(latitude);
-      print(longitude);
+      
     } on Exception {
       position = null;
     }
   }
+  print(id);
+  print(latitude);
+  print(longitude);
 
   _currentLocation();
 
