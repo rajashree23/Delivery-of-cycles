@@ -128,10 +128,12 @@ class UserState extends State<User> {
           new Expanded(
             
             flex: 2,
-            child:new Container(
-               color:Colors.purpleAccent,
-    child: new ButtonBar(
-       mainAxisSize: MainAxisSize.max,      
+           
+     child:new Container(   
+       color: Colors.lightBlueAccent,       
+    child: new Row(
+       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+       crossAxisAlignment: CrossAxisAlignment.baseline,      
       children: <Widget>[
 
       new RaisedButton(
@@ -153,7 +155,7 @@ class UserState extends State<User> {
           
                 ],
               ),
-            ),
+     ),
                       ),
                     
                   ],

@@ -18,7 +18,7 @@ final String url2 = "https://nec-hn.herokuapp.com/driver";
       position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
-      longitude = position.longitude;
+      
      
       // print(latitude);
       // print(longitude);
@@ -36,7 +36,7 @@ Future<double> _premiumLongitudeLocation() async  {
       position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
-      longitude = position.longitude;
+      
      
       // print(latitude);
       // print(longitude);
@@ -52,7 +52,7 @@ print(lat);
 print(lon);
 
   var response = await http.post(Uri.encodeFull(url1),
-      body: json.encode({"token": id, "latitude": lat, "longitude": lon}),
+      body: json.encode({"uid": id, "latitude": lat, "longitude": lon}),
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
@@ -93,7 +93,7 @@ Future<dynamic> driverLocation() async {
 
   var response = await http.post(Uri.encodeFull(url2),
       body: json
-          .encode({"token": id, "latitude": latitude, "longitude": longitude}),
+          .encode({"uid": id, "latitude": latitude, "longitude": longitude}),
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
