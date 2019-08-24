@@ -15,13 +15,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        color: Colors.black,
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlutterLogo(size: 150),
+              Image(image: AssetImage("assets/index.png"), height: 35.0),
               SizedBox(height: 50),
               _signInUButton(),
               SizedBox(height: 15),
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _signInUButton() {
-    return OutlineButton(
+    return RaisedButton(
       splashColor: Colors.grey,
       onPressed: () {
         signInWithGoogle().whenComplete(() {
@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
       
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
+      color:Colors.white,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Sign in as rider with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey,
+                  color: Colors.black87,
                 ),
               ),
             )
