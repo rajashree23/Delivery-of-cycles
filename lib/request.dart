@@ -18,13 +18,6 @@ Future<dynamic> userLocation() async {
       position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
-<<<<<<< HEAD
-      
-     
-      // print(latitude);
-      // print(longitude);
-=======
->>>>>>> a6b31871edce1cc251aaeaebf24038464bb1c06c
     } on Exception {
       position = null;
     }
@@ -39,14 +32,7 @@ Future<dynamic> userLocation() async {
       position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       latitude = position.latitude;
-<<<<<<< HEAD
-      
-     
-      // print(latitude);
-      // print(longitude);
-=======
       longitude = position.longitude;
->>>>>>> a6b31871edce1cc251aaeaebf24038464bb1c06c
     } on Exception {
       position = null;
     }
@@ -59,11 +45,7 @@ Future<dynamic> userLocation() async {
   print(lon);
 
   var response = await http.post(Uri.encodeFull(url1),
-<<<<<<< HEAD
-      body: json.encode({"uid": id, "latitude": lat, "longitude": lon}),
-=======
       body: json.encode({"token": token, "latitude": lat, "longitude": lon}),
->>>>>>> a6b31871edce1cc251aaeaebf24038464bb1c06c
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
@@ -118,12 +100,7 @@ Future<dynamic> driverLocation() async {
   print(lon);
 
   var response = await http.post(Uri.encodeFull(url2),
-<<<<<<< HEAD
-      body: json
-          .encode({"uid": id, "latitude": latitude, "longitude": longitude}),
-=======
       body: json.encode({"token": token, "latitude": lat, "longitude": lon}),
->>>>>>> a6b31871edce1cc251aaeaebf24038464bb1c06c
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
