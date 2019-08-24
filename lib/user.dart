@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
+
 // import 'package:flutter_google_places/flutter_google_places.dart';
 
 import 'package:flutter/material.dart';
@@ -26,6 +26,7 @@ class User extends StatefulWidget {
 class UserState extends State<User> {
   Completer<GoogleMapController> _controller = Completer();
   double longitude, latitude;
+
   @override
   Widget build(BuildContext context) {
     // var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
@@ -115,27 +116,32 @@ class UserState extends State<User> {
               ),
             ),
             new Expanded(
-              flex: 2,
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                
-                children: <Widget>[
-                  new RaisedButton(
-                    child: new Text("Normal"),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    color: Colors.blueAccent[600],
-                    onPressed: null,
-                  ),
-                  new RaisedButton(
-                      child: new Text("Premium"),
+              flex: 1,
+              child: new Container(
+                color: Colors.purple[100],
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new RaisedButton(
+                      child: new Text("Normal"),
+                      textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30)),
-                      color: Colors.redAccent,
-                      onPressed: () {
-                        userLocation();
-                      }),
-                ],
+                          borderRadius: BorderRadius.circular(100)),
+                      color: Colors.blueAccent[600],
+                      onPressed: null,
+                    ),
+                    new RaisedButton(
+                        child: new Text("Premium"),
+                        textColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.deepPurple,
+                        onPressed: () {
+                          userLocation();
+                          // showDriverLocation();
+                        }),
+                  ],
+                ),
               ),
             ),
           ],
