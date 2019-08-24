@@ -33,7 +33,7 @@ class UserState extends State<User> {
 
     return new Scaffold(
       appBar: new AppBar(
-          title: new Text("Welcome"), backgroundColor: Colors.purple[800]),
+          title: new Text("Welcome"), backgroundColor: Colors.black),
       drawer: new Drawer(
         child: new ListView(
           children: <Widget>[
@@ -42,7 +42,7 @@ class UserState extends State<User> {
                 name,
                 style: TextStyle(
                     fontSize: 25,
-                    color: Colors.deepPurple,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
               accountEmail: new Text(
@@ -50,13 +50,14 @@ class UserState extends State<User> {
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.purple),
+                    color: Colors.white),
               ),
               decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: new ExactAssetImage('assets/face.png'),
-                  fit: BoxFit.cover,
-                ),
+                color: Colors.black,
+              //   image: new DecorationImage(
+              //     image: new ExactAssetImage('assets/face.png'),
+              //     fit: BoxFit.cover,
+              //   ),
               ),
               currentAccountPicture:
                   CircleAvatar(backgroundImage: NetworkImage(imageUrl)),
@@ -118,7 +119,7 @@ class UserState extends State<User> {
             new Expanded(
               flex: 1,
               child: new Container(
-                color: Colors.purple[100],
+                color: Colors.grey[300],
                 child: new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -135,7 +136,7 @@ class UserState extends State<User> {
                         textColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
-                        color: Colors.deepPurple,
+                        color: Colors.black,
                         onPressed: () {
                           userLocation();
                           // showDriverLocation();

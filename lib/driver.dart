@@ -28,7 +28,7 @@ class DriverState extends State<Driver> {
 
     return Scaffold(
       appBar: new AppBar(
-          title: new Text("Welcome"), backgroundColor: Colors.purple[800]),
+          title: new Text("Welcome"), backgroundColor: Colors.black),
       drawer: new Drawer(
         child: new ListView(
           children: <Widget>[
@@ -37,7 +37,7 @@ class DriverState extends State<Driver> {
                 name,
                 style: TextStyle(
                     fontSize: 25,
-                    color: Colors.deepPurple,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
               accountEmail: new Text(
@@ -45,13 +45,11 @@ class DriverState extends State<Driver> {
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.purple),
+                    color: Colors.white),
               ),
               decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: new ExactAssetImage('assets/face.png'),
-                  fit: BoxFit.cover,
-                ),
+                color: Colors.black,
+                
               ),
               currentAccountPicture:
                   CircleAvatar(backgroundImage: NetworkImage(imageUrl)),
@@ -62,12 +60,7 @@ class DriverState extends State<Driver> {
                 onTap: () {
                   Navigator.pop(context);
                 }),
-            new ListTile(
-                leading: Icon(Icons.payment),
-                title: new Text("Payment"),
-                onTap: () {
-                  Navigator.pop(context);
-                }),
+            
             new ListTile(
                 leading: Icon(Icons.help),
                 title: new Text("Help"),

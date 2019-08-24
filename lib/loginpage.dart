@@ -14,6 +14,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // new Expanded(
+      //   flex:0,
       body: Container(
         color: Colors.black,
         child: Center(
@@ -21,10 +23,10 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image(image: AssetImage("assets/index.png"), height: 50.0),
-              SizedBox(height: 50),
+              Image(image: AssetImage("assets/index.png"), height: 150.0),
+              SizedBox(height: 35),
               _signInUButton(),
-              SizedBox(height: 15),
+              SizedBox(height: 5),
               _signInDButton(),
             ],
           ),
@@ -47,10 +49,9 @@ class _LoginPageState extends State<LoginPage> {
           );
         });
       },
-      
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      color:Colors.white,
+      color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
@@ -90,8 +91,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      color:Colors.white,
-     
+      color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
