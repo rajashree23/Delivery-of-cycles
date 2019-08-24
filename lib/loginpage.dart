@@ -90,6 +90,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
+      color:Colors.white,
       borderSide: BorderSide(color: Colors.grey),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
