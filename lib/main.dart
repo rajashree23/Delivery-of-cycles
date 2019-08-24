@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nec/driver.dart';
+import 'package:nec/idleDriver.dart';
 
 import 'loginpage.dart';
 
@@ -13,6 +15,11 @@ class MyApp extends StatelessWidget {
       //  theme: myAppTheme,
 
       home: LoginPage(),
+       routes: <String, WidgetBuilder> {
+    '/screen1': (BuildContext context) => new Driver(),
+    '/screen2' : (BuildContext context) => new IdleDriver()
+       },
+    
       debugShowCheckedModeBanner: false,
     );
   }

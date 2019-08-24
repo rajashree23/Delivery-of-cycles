@@ -1,16 +1,18 @@
 import 'dart:async';
-
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 // import 'package:flutter_google_places/flutter_google_places.dart';
 
 import 'package:flutter/material.dart';
-import 'package:nec/idleDriver.dart';
-// import 'package:google_maps_webservice/places.dart';
+
+import 'package:google_maps_webservice/places.dart';
 // import 'autocomplete.dart';
 // import 'package:sign_in_flutter/loginpage.dart';
 // import 'package:sign_in_flutter/signin.dart';
 // import 'loginpage.dart';
 import 'loginpage.dart';
 // import 'package:geolocator/geolocator.dart';
+
 import 'signin.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -25,8 +27,20 @@ class Driver extends StatefulWidget {
 }
 
 class DriverState extends State<Driver> {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   Completer<GoogleMapController> _controller = Completer();
   double longitude, latitude;
+  @override
+ void initState() {
+   super.initState();
+  flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+    var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
+    var iOS = new IOSInitializationSettings();
+    var initSetttings = new InitializationSettings(android,iOS);
+    flutterLocalNotificationsPlugin.initialize(initSetttings,
+        
+        onSelectNotification: onSelectNotification);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,13 +147,17 @@ class DriverState extends State<Driver> {
                     //   onPressed: null,
                     // ),
                     new RaisedButton(
-                        child: new Text("Ride completed"),
+                        child: new Text("Start Ride"),
                         textColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         color: Colors.black,
                         onPressed: () {
-                          return IdleDriver();
+                          openurl();
+                          _showNotificationWithoutSound();
+
+                          //  Navigator.of(context).popAndPushNamed('/screen2');
+
                           // userLocation();
                           // showDriverLocation();
                         }),
@@ -152,4 +170,31 @@ class DriverState extends State<Driver> {
       ),
     );
   }
+  Future onSelectNotification(String payload) async {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return new AlertDialog(
+          title: Text("PayLoad"),
+          content: Text("Payload : $payload"),
+        );
+      },
+    );
+  }
+  Future _showNotificationWithoutSound() async {
+  var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
+      'your channel id', 'your channel name', 'your channel description',
+      playSound: false, importance: Importance.Max, priority: Priority.High);
+  var iOSPlatformChannelSpecifics =
+      new IOSNotificationDetails(presentSound: false);
+  var platformChannelSpecifics = new NotificationDetails(
+      androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+  await flutterLocalNotificationsPlugin.show(
+    0,
+    'New Post',
+    'How to Show Notification in Flutter',
+    platformChannelSpecifics,
+    payload: 'No_Sound',
+  );
+}
 }

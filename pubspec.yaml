@@ -30,9 +30,11 @@ dependencies:
   # flutter_google_places: ^0.2.3
   # geocoder: ^0.2.1
   http: ^0.12.0+2
-  # google_maps_webservice: ^0.0.14
+  google_maps_webservice: ^0.0.14
   firebase_messaging: ^4.0.0+4
   intl: ^0.15.8
+  url_launcher: ^4.2.0+3
+  flutter_local_notifications: ^0.8.2
   
 
 dev_dependencies:

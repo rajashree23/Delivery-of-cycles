@@ -2,7 +2,6 @@ import 'dart:async';
 
 // import 'package:flutter_google_places/flutter_google_places.dart';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 // import 'package:google_maps_webservice/places.dart';
 // import 'autocomplete.dart';
@@ -29,7 +28,8 @@ class IdleDriverState extends State<IdleDriver> {
   // double longitude, latitude;
   String _homeScreenText = "Waiting for token...";
   String _messageText = "Waiting for message...";
-
+  
+  bool st = false;
   Timer timer;
   @override
   void initState() {
@@ -42,8 +42,16 @@ class IdleDriverState extends State<IdleDriver> {
     // var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
     setState(() {
       // pushMessagingExample();
-      driverTime(context);
-
+      if (st == false)
+        driverTime(context).then((int n) => setState(() {
+              if (n == 0) {
+                st = false;
+              } else {
+                st = true;
+              }
+            }));
+      //else
+      //st=false;
       const oneSecond = const Duration(seconds: 300);
       timer = Timer.periodic(oneSecond, (Timer t) => setState(() {}));
       // pushMessagingExample();
@@ -130,7 +138,6 @@ class IdleDriverState extends State<IdleDriver> {
               ])
             ],
           ),
-    
         ));
   }
 
@@ -172,5 +179,5 @@ class IdleDriverState extends State<IdleDriver> {
   //     print(_homeScreenText);
   //   });
   // }
-  
+
 }
