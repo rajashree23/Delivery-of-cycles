@@ -1,10 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:nec/driver.dart';
+import 'package:nec/idleDriver.dart';
 import 'signin.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-
+import 'FinalDetails.dart';
+import 'driver.dart';
+import 'idleDriver.dart';
 // import 'driverLocationModel.dart';
 // final String url1 = "https://nec-hn.herokuapp.com/user";
 final String url2 = "https://nec-hn.herokuapp.com/driver";
@@ -73,7 +78,7 @@ final String url2 = "https://nec-hn.herokuapp.com/driver";
 
 // /////////////////////////////////////////////
 
-Future<dynamic> driverTime() async {
+Future<dynamic> driverTime(BuildContext context) async {
    String token = await signInWithGoogle();
   double latitude, longitude;
 
@@ -129,16 +134,33 @@ Future<dynamic> driverTime() async {
 //  print(now.weekday);
  var weekday=now.weekday;
 
-//  var response = await http.post(Uri.encodeFull(url2),
+ var response = await http.post(Uri.encodeFull(url2),
 
-//       body: json.encode({"token": token,"lattitude":lat, "longitude": lon,"day":weekday,"time":time,"holiday": 0 }),
-//       headers: {
-//         "content-type": "application/json",
-//         "Accept": "application/json"
-//       });
-//   print(response.body);
+      body: json.encode({"token": token,"lattitude":lat, "longitude": lon,"day":weekday,"time":time,"holiday": 0 }),
+      headers: {
+        "content-type": "application/json",
+        "Accept": "application/json"
+      });
+  print(response.body);
+  
+  final data = json.decode(response.body);
+
+        final responses = new DriverLocation.fromJson(data);
+        print(responses.fromplace);
+        print(responses.toplace);
+        print(responses.done);
+        if(responses.done==0){
+          return IdleDriver();
+        }
+       if(responses.done==1)
+      {
+         Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Driver()),);
+      }
+    }
  
-}
+
 
 
 

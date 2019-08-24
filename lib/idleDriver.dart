@@ -42,7 +42,7 @@ class IdleDriverState extends State<IdleDriver> {
     // var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
     setState(() {
       // pushMessagingExample();
-      driverTime();
+      driverTime(context);
 
       const oneSecond = const Duration(seconds: 300);
       timer = Timer.periodic(oneSecond, (Timer t) => setState(() {}));
