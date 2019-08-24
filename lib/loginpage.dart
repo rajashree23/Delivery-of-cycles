@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image(image: AssetImage("assets/index.png"), height: 35.0),
+              Image(image: AssetImage("assets/index.png"), height: 50.0),
               SizedBox(height: 50),
               _signInUButton(),
               SizedBox(height: 15),
@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _signInDButton() {
     return OutlineButton(
-      splashColor: Colors.grey,
+      splashColor: Colors.white,
       onPressed: () {
         signInWithGoogle().whenComplete(() {
           Navigator.of(context).push(
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Sign in as driver with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey,
+                  color: Colors.black87,
                 ),
               ),
             )
