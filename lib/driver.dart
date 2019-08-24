@@ -27,20 +27,20 @@ class Driver extends StatefulWidget {
 }
 
 class DriverState extends State<Driver> {
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  // FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   Completer<GoogleMapController> _controller = Completer();
   double longitude, latitude;
-  @override
- void initState() {
-   super.initState();
-  flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-    var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
-    var iOS = new IOSInitializationSettings();
-    var initSetttings = new InitializationSettings(android,iOS);
-    flutterLocalNotificationsPlugin.initialize(initSetttings,
+//   @override
+//  void initState() {
+//    super.initState();
+//   flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+//     var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
+//     var iOS = new IOSInitializationSettings();
+//     var initSetttings = new InitializationSettings(android,iOS);
+//     flutterLocalNotificationsPlugin.initialize(initSetttings,
         
-        onSelectNotification: onSelectNotification);
-  }
+//         onSelectNotification: onSelectNotification);
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +154,7 @@ class DriverState extends State<Driver> {
                         color: Colors.black,
                         onPressed: () {
                           openurl();
-                          _showNotificationWithoutSound();
+                          // _showNotificationWithoutSound();
 
                           //  Navigator.of(context).popAndPushNamed('/screen2');
 
@@ -170,31 +170,31 @@ class DriverState extends State<Driver> {
       ),
     );
   }
-  Future onSelectNotification(String payload) async {
-    showDialog(
-      context: context,
-      builder: (_) {
-        return new AlertDialog(
-          title: Text("PayLoad"),
-          content: Text("Payload : $payload"),
-        );
-      },
-    );
-  }
-  Future _showNotificationWithoutSound() async {
-  var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
-      'your channel id', 'your channel name', 'your channel description',
-      playSound: false, importance: Importance.Max, priority: Priority.High);
-  var iOSPlatformChannelSpecifics =
-      new IOSNotificationDetails(presentSound: false);
-  var platformChannelSpecifics = new NotificationDetails(
-      androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-  await flutterLocalNotificationsPlugin.show(
-    0,
-    'New Post',
-    'How to Show Notification in Flutter',
-    platformChannelSpecifics,
-    payload: 'No_Sound',
-  );
-}
+//   Future onSelectNotification(String payload) async {
+//     showDialog(
+//       context: context,
+//       builder: (_) {
+//         return new AlertDialog(
+//           title: Text("PayLoad"),
+//           content: Text("Payload : $payload"),
+//         );
+//       },
+//     );
+//   }
+//   Future _showNotificationWithoutSound() async {
+//   var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
+//       'your channel id', 'your channel name', 'your channel description',
+//       playSound: false, importance: Importance.Max, priority: Priority.High);
+//   var iOSPlatformChannelSpecifics =
+//       new IOSNotificationDetails(presentSound: false);
+//   var platformChannelSpecifics = new NotificationDetails(
+//       androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+//   await flutterLocalNotificationsPlugin.show(
+//     0,
+//     'New Post',
+//     'How to Show Notification in Flutter',
+//     platformChannelSpecifics,
+//     payload: 'No_Sound',
+//   );
+// }
 }
