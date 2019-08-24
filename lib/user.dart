@@ -123,13 +123,14 @@ class UserState extends State<User> {
             flex: 2,
            
      child:new Container(   
-       color: Colors.lightBlueAccent,       
+       color: Colors.lightBlue,       
     child: new Row(
        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
        crossAxisAlignment: CrossAxisAlignment.baseline,      
       children: <Widget>[
 
       new RaisedButton(
+    
         child: new Text("Normal"),
         color:  Colors.blueAccent[600],
         onPressed: null,
