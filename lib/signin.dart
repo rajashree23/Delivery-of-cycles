@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:google_maps_webservice/places.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,6 +11,9 @@ String email;
 String imageUrl;
 
 Future<String> signInWithGoogle() async {
+ final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+//  _firebaseMessaging.getToken();
+
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount.authentication;
@@ -37,7 +41,8 @@ Future<String> signInWithGoogle() async {
   // print("HEEEEEEEEEEEEEEEEEEEEEEELOOOOOOOOOOOOOOOOOOO") ;
 
   // print(id);
-  return currentUser.getIdToken();
+  
+  return _firebaseMessaging.getToken();
 }
 
 void signOutGoogle() async {
