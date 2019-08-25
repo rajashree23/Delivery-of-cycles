@@ -26,8 +26,8 @@ class IdleDriver extends StatefulWidget {
 class IdleDriverState extends State<IdleDriver> {
   // Completer<GoogleMapController> _controller = Completer();
   // double longitude, latitude;
-  String _homeScreenText = "Waiting for token...";
-  String _messageText = "Waiting for message...";
+
+  String _messageText = "Waiting for next delivery of cycles...";
   
   bool st = false;
   Timer timer;
@@ -39,7 +39,7 @@ class IdleDriverState extends State<IdleDriver> {
 
   @override
   Widget build(BuildContext context) {
-    // var width = MediaQuery.of(context).size.width; // Using this line I got the device screen width
+    // var width = MediaQuery.of(context).size.width; 
     setState(() {
       // pushMessagingExample();
       if (st == false)
@@ -127,13 +127,21 @@ class IdleDriverState extends State<IdleDriver> {
         ),
         body: Material(
           child: Column(
+              
             children: <Widget>[
-              Center(
-                child: Text(_homeScreenText),
-              ),
-              Row(children: <Widget>[
+               SizedBox(height: 250),
+             
+              Row(
+             
+                children: <Widget>[
+                
                 Expanded(
-                  child: Text(_messageText),
+                 
+                  child: Text(_messageText, style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87),),
+
                 ),
               ])
             ],

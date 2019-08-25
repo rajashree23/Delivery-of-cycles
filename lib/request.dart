@@ -14,7 +14,8 @@ import 'package:url_launcher/url_launcher.dart';
 // final String url1 = "https://nec-hn.herokuapp.com/user";
 final String url2 = "https://nec-hn.herokuapp.com/driver";
 
-
+var dummyTime=9;
+  var dummyDay=1;
 
 
 
@@ -24,10 +25,12 @@ final String url2 = "https://nec-hn.herokuapp.com/driver";
 
  int i;
  int j;
- void openurl(){
+ int cycleNums;
+ int openurl(){
    print(i);
    print(j);
    launchUrl(latitude[i-1], longitude[i-1], latitude[j-1], longitude[j-1]);
+   return cycleNums;
  }
  
 
@@ -152,24 +155,35 @@ Future<int> driverTime(BuildContext context) async {
   var now = new DateTime.now();
   String time1 = new DateFormat("H").format(now);
   var time = int.parse(time1);
+  
 
 //  print(time);
 //  print(now.weekday);
   var weekday = now.weekday;
-
+  
   var response = await http.post(Uri.encodeFull(url2),
       body: json.encode({
         "token": token,
         "lattitude": lat,
         "longitude": lon,
-        "day": weekday,
-        "time": time,
+        "day": dummyDay,
+        "time": dummyTime,
         "holiday": 0
       }),
+      
       headers: {
         "content-type": "application/json",
         "Accept": "application/json"
       });
+      if(dummyDay<7)
+        dummyDay+=1;
+      else
+       dummyDay=1;
+       if(dummyTime<20)
+        dummyTime+=1;
+        else
+        dummyTime=9;
+      
   print(response.body);
 
   final data = json.decode(response.body);
@@ -182,6 +196,7 @@ Future<int> driverTime(BuildContext context) async {
   if (responses.done == 1) {
        i=responses.fromplace;
        j=responses.toplace;
+       cycleNums=responses.cycles;
        
      Navigator.of(context).pushNamed('/screen1');
     return 1;
