@@ -3,9 +3,9 @@
 
 
 ## Contents
-- [Description](Description)
-- Snapshots
-- [Tech Stack](teck-stack)
+- [Description](#Description)
+- [Snapshots](#Snapshots)
+- [Tech Stack](#Tech-Stack)
 
 
 ### Description
