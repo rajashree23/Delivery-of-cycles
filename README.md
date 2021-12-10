@@ -9,10 +9,11 @@
 
 
 ### Description
-Delivery of cycles is a mobile application built using flutter and flask. The very idea of PBS or Public Bike Sharing is brilliant as it gives flexibility to citizens to cover small distances using bicycles. But, sometimes in a higher demanded place, there's a shortage of bicycles at the stands and this is where our idea comes into play.
+Delivery of cycles is a mobile application built using flutter and flask. PBS or Public Bike Sharing is a brilliant idea as it gives flexibility to citizens to cover small distances using bicycles. But, sometimes in a higher demanded place, there's a shortage of bicycles at the stands and this is where our idea comes into play.
 
-The bicycle conveyer can use our app to know the number of cycles that needs to be delivered to a particular stand.  We have used the 'Regression Algorithm' to predict the demand in a place at a specific time.
-The driver can complete the task by delivering the cycles.
+The bicycle conveyer can use our app to know the number of cycles that needs to be delivered to a particular stand.  We have used the 'Regression Algorithm' to predict the demand in a place at a specific time. 
+
+The app sends a notification to the driver regarding the quantity of the bicycles to be delivered. Once he selects the task, the location will open up in the google map and he can deliver the cycles.
 
 ### Snapshots
 
