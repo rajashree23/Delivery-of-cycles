@@ -1,6 +1,5 @@
 # Delivery of cycles
 
-This is the front end repo of the application- [https://github.com/rajashree23/Delivery-of-cycles](https://github.com/rajashree23/Delivery-of-cycles)
 
 ## Contents
 - [Description](#Description)
